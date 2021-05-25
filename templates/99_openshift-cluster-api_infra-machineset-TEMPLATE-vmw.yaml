@@ -1,0 +1,57 @@
+apiVersion: machine.openshift.io/v1beta1
+kind: MachineSet
+metadata:
+  creationTimestamp: null
+  labels:
+    machine.openshift.io/cluster-api-cluster: ${CLUSTERID}
+  name: ${CLUSTERID}-infra
+  namespace: openshift-machine-api
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      machine.openshift.io/cluster-api-cluster: ${CLUSTERID}
+      machine.openshift.io/cluster-api-machineset: ${CLUSTERID}-infra
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        machine.openshift.io/cluster-api-cluster: ${CLUSTERID}
+        machine.openshift.io/cluster-api-machine-role: infra
+        machine.openshift.io/cluster-api-machine-type: infra
+        machine.openshift.io/cluster-api-machineset: ${CLUSTERID}-infra
+    spec:
+      taints:
+      - effect: NoSchedule
+        key: node-function
+        value: infra
+      metadata:
+        creationTimestamp: null
+        labels:
+          node-role.kubernetes.io/infra: ""
+      providerSpec:
+        value:
+          apiVersion: vsphereprovider.openshift.io/v1beta1
+          credentialsSecret:
+            name: vsphere-cloud-credentials
+          diskGiB: 120
+          kind: VSphereMachineProviderSpec
+          memoryMiB: 8192
+          metadata:
+            creationTimestamp: null
+          network:
+            devices:
+            - networkName: ${VMNETWORK}
+          numCPUs: 2
+          numCoresPerSocket: 1
+          template: ${CLUSTERID}-rhcos
+          userDataSecret:
+            name: worker-user-data
+          workspace:
+            datacenter: ${DATACENTER}
+            datastore: ${DATASTORE}
+            folder: /${DATACENTER}/vm/${CLUSTERID}
+            resourcePool: /${DATACENTER}/host/${CLUSTER}/Resources/${RESOURCEPOOL}
+            server: ${VSPHERE_SERVER}
+status:
+  replicas: 0
