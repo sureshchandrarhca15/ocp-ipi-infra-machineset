@@ -12,11 +12,11 @@ zones=(us-east-1a us-east-1b us-east-1c)
 ami="ami-00e472e63fc0dbe01"
 
 # vSphere datacenter, datastore and server info
-datacenter="DC01"
-datastore="ds-ssd"
-vspheresrv="vcs.it.local"
-cluster="CLU01"
-vmnetwork="PG_Services"
+datacenter="dc1"
+datastore="ds1"
+vspheresrv="vsphere.example.com"
+cluster="cl1"
+vmnetwork="vm_network"
 resourcepool="OCP"
 
 # Create the outdir
