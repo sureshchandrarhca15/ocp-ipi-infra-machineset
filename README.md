@@ -39,6 +39,9 @@ resourcepool="OCP"
 * `datacenter` is the name of your datacenter
 * `datastore` is the name of the datastore you want the VMs to be installed on
 * `vspheresrv` is the hostname of your vSphere/vCenter endpoint.
+* `cluster` is the Cluster name  of your vSphere/vCenter endpoint.
+* `vmnetwork` is the VM Network of your vSphere/vCenter to connect VMs.
+* `resourcepool` is the  Resource Pool name of your vSphere/vCenter to keep VMs.
 
 
 ## Run
