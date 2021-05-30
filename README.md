@@ -71,4 +71,4 @@ oc apply -f ./out/
 
 ## SLA
 
-I make no guarantees for this QnD script, so YMMV. Use caution.
+I make no guarantees for this QnD script, So please run it on your own risk. Use caution.
