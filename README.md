@@ -4,11 +4,11 @@ Quick and Dirty shell script to create machinesets as seen on the Infra Node [Tw
 
 > :rotating_light: This script has been tested on OCP 4.5, 4.6, and 4.7
 
-## Setup 
+## Setup ##
 
 Edit this script with your variables depending on your env
 
-### AWS
+### AWS ##
 
 
 ```shell
@@ -23,7 +23,7 @@ ami="ami-00e472e63fc0dbe01"
 * `zones` is an array of the AWS zones you want your infra node to be in.
 * `ami` is the name of the AWS ami of RHCOS
 
-### vSphere
+### vSphere ##
 
 ```shell
 clusterid="cluster2-79bxd"
@@ -44,7 +44,7 @@ resourcepool="OCP"
 * `resourcepool` is the  Resource Pool name of your vSphere/vCenter to keep VMs.
 
 
-## Run
+## Run ##
 
 Run the script for AWS
 
@@ -59,7 +59,7 @@ Run the script for vSphere
 ```
 
 
-## Apply
+## Apply ##
 
 Apply the manifest
 
@@ -69,6 +69,6 @@ Apply the manifest
 oc apply -f ./out/
 ```
 
-## SLA
+## SLA ##
 
 I make no guarantees for this QnD script, So please run it on your own risk. Use caution.
